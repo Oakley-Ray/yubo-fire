@@ -63,7 +63,7 @@ export function ServiceCards() {
     <>
       {/* Mobile: horizontal scroll snap */}
       <div className="sm:hidden">
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-4 -mx-6 scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 py-4 -mx-6 scrollbar-hide">
           {services.map((service, i) => (
             <div
               key={service.title}
