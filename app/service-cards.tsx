@@ -63,15 +63,15 @@ export function ServiceCards() {
     <>
       {/* Mobile: horizontal scroll snap */}
       <div className="sm:hidden">
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 py-4 -mx-6 scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto overflow-y-visible snap-x snap-mandatory px-6 py-6 -mx-6 scrollbar-hide">
           {services.map((service, i) => (
             <div
               key={service.title}
               ref={(el) => { cardRefs.current[i] = el; }}
               className={`snap-center shrink-0 w-[80vw] rounded-xl p-7 border transition-all duration-500 ${
                 activeIndex === i
-                  ? "bg-white border-amber/30 shadow-lg scale-[1.02]"
-                  : "bg-white/60 border-slate-200 opacity-50 scale-[0.97]"
+                  ? "bg-white border-amber/30 shadow-lg"
+                  : "bg-white/60 border-slate-200 opacity-40"
               }`}
             >
               <div
