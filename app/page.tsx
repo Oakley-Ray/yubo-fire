@@ -339,8 +339,8 @@ export default function Home() {
       <Process />
       <About />
       <CTA />
-      <Contact />
       <FAQ />
+      <Contact />
       <Footer />
     </>
   );
