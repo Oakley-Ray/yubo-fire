@@ -8,6 +8,7 @@ import {
   BuildingIcon,
 } from "./icons";
 import { HeroIllustration } from "./hero-illustration";
+import { ServiceCards } from "./service-cards";
 
 function Navbar() {
   return (
@@ -91,33 +92,6 @@ function Hero() {
   );
 }
 
-const services = [
-  {
-    icon: ClipboardCheckIcon,
-    title: "消防安全檢修",
-    description:
-      "依法定期進行消防安全設備檢修申報，確保各類場所符合消防法規，保障人員安全。",
-  },
-  {
-    icon: WrenchIcon,
-    title: "消防改善工程",
-    description:
-      "針對消防缺失項目進行專業改善工程，從規劃設計到施工驗收，一條龍服務。",
-  },
-  {
-    icon: ShieldIcon,
-    title: "消防設備安裝",
-    description:
-      "各類消防安全設備安裝工程，包含火警自動警報、滅火設備、避難逃生設備等。",
-  },
-  {
-    icon: PackageIcon,
-    title: "消防器材買賣",
-    description:
-      "提供滅火器、偵煙探測器、緩降機、消防栓設備等各式消防器材銷售與諮詢。",
-  },
-];
-
 function Services() {
   return (
     <section id="services" className="bg-slate-50 py-20 sm:py-24">
@@ -129,24 +103,7 @@ function Services() {
           <h2 className="text-3xl font-bold text-slate-800 mt-2">服務項目</h2>
           <div className="w-12 h-0.5 bg-amber mx-auto mt-4" />
         </div>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group bg-white rounded-xl p-8 border border-slate-200 hover:border-amber/30 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="w-12 h-12 bg-navy/5 group-hover:bg-amber/10 rounded-lg flex items-center justify-center mb-5 transition-colors">
-                <service.icon className="w-6 h-6 text-navy group-hover:text-amber transition-colors" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">
-                {service.title}
-              </h3>
-              <p className="text-slate-500 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <ServiceCards />
       </div>
     </section>
   );
