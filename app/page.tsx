@@ -30,6 +30,12 @@ function Navbar() {
             服務項目
           </a>
           <a
+            href="/articles"
+            className="text-slate-200 hover:text-amber transition-colors"
+          >
+            消防知識
+          </a>
+          <a
             href="#about"
             className="text-slate-200 hover:text-amber transition-colors"
           >

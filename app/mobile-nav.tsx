@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import {
   ShieldIcon,
   WrenchIcon,
+  FileTextIcon,
   ClipboardCheckIcon,
   PhoneIcon,
   MapPinIcon,
@@ -13,6 +14,7 @@ import {
 const navItems = [
   { href: "#", label: "首頁", icon: ShieldIcon },
   { href: "#services", label: "服務項目", icon: WrenchIcon },
+  { href: "/articles", label: "消防知識", icon: FileTextIcon },
   { href: "#about", label: "關於我們", icon: ClipboardCheckIcon },
   { href: "#contact", label: "聯絡資訊", icon: MapPinIcon },
 ];
