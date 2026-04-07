@@ -68,7 +68,8 @@ export function MobileNav() {
 
       {/* Sidebar drawer */}
       <aside
-        className={`fixed top-0 right-0 z-50 h-full w-64 bg-navy-dark shadow-2xl transform transition-transform duration-300 ease-in-out ${
+        style={{ backgroundColor: "#091e36" }}
+        className={`fixed top-0 right-0 z-50 h-full w-64 shadow-2xl transform transition-transform duration-300 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
