@@ -75,7 +75,7 @@ export function ProcessFlow() {
   const row2 = [steps[5], steps[4], steps[3]];
 
   return (
-    <div ref={containerRef} className="max-w-3xl mx-auto relative sm:pr-12">
+    <div ref={containerRef} className="max-w-5xl mx-auto relative sm:pr-16">
       {/* SVG path */}
       <svg
         className="absolute inset-0 pointer-events-none z-0"
@@ -87,12 +87,12 @@ export function ProcessFlow() {
       </svg>
 
       {/* Row 1 circles */}
-      <div className="grid grid-cols-3 gap-6 pr-6">
+      <div className="grid grid-cols-3 gap-10 pr-8">
         {row1.map((item, i) => (
           <div key={item.step} className="flex justify-center">
             <div
               ref={(el) => { circleRefs.current[i] = el; }}
-              className="w-12 h-12 bg-navy text-amber font-bold text-sm rounded-full flex items-center justify-center relative z-10 ring-4 ring-white"
+              className="w-14 h-14 bg-navy text-amber font-bold text-base rounded-full flex items-center justify-center relative z-10 ring-4 ring-white"
             >
               {item.step}
             </div>
@@ -103,8 +103,8 @@ export function ProcessFlow() {
       <div className="grid grid-cols-3 gap-6 mt-4 mb-6 pr-6">
         {row1.map((item) => (
           <div key={item.step} className="text-center">
-            <h3 className="font-bold text-slate-800 mb-2">{item.title}</h3>
-            <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+            <h3 className="font-bold text-slate-800 text-lg mb-2">{item.title}</h3>
+            <p className="text-slate-500 leading-relaxed">{item.description}</p>
           </div>
         ))}
       </div>
@@ -117,7 +117,7 @@ export function ProcessFlow() {
             <div key={item.step} className="flex justify-center">
               <div
                 ref={(el) => { circleRefs.current[refIdx] = el; }}
-                className="w-12 h-12 bg-navy text-amber font-bold text-sm rounded-full flex items-center justify-center relative z-10 ring-4 ring-white"
+                className="w-14 h-14 bg-navy text-amber font-bold text-base rounded-full flex items-center justify-center relative z-10 ring-4 ring-white"
               >
                 {item.step}
               </div>
@@ -129,8 +129,8 @@ export function ProcessFlow() {
       <div className="grid grid-cols-3 gap-6 mt-4 pr-6">
         {row2.map((item) => (
           <div key={item.step} className="text-center">
-            <h3 className="font-bold text-slate-800 mb-2">{item.title}</h3>
-            <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+            <h3 className="font-bold text-slate-800 text-lg mb-2">{item.title}</h3>
+            <p className="text-slate-500 leading-relaxed">{item.description}</p>
           </div>
         ))}
       </div>
