@@ -59,18 +59,18 @@ function DrawerPortal({ open, onClose }: { open: boolean; onClose: () => void })
       />
 
       {/* Sidebar */}
-      <aside
+      <div
         style={{
           position: "fixed",
           top: 0,
-          right: 0,
+          right: open ? 0 : "-16rem",
           zIndex: 9999,
-          height: "100vh",
+          height: "100dvh",
           width: "16rem",
-          backgroundColor: "#091e36",
+          background: "#091e36",
           boxShadow: "0 25px 50px -12px rgba(0,0,0,.25)",
-          transform: open ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 300ms ease-in-out",
+          transition: "right 300ms ease-in-out",
+          overflow: "hidden",
         }}
       >
         {/* Header */}
@@ -115,7 +115,7 @@ function DrawerPortal({ open, onClose }: { open: boolean; onClose: () => void })
             立即撥打
           </a>
         </div>
-      </aside>
+      </div>
     </>,
     document.body
   );
