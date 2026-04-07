@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import {
   ShieldIcon,
   WrenchIcon,
-  PackageIcon,
   ClipboardCheckIcon,
   PhoneIcon,
   MapPinIcon,
@@ -33,6 +33,94 @@ function CloseIcon({ className }: { className?: string }) {
   );
 }
 
+function DrawerPortal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <>
+      {/* Overlay */}
+      <div
+        onClick={onClose}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 9998,
+          backgroundColor: "#000",
+          transition: "opacity 300ms",
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? "auto" : "none",
+        }}
+      />
+
+      {/* Sidebar */}
+      <aside
+        style={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          zIndex: 9999,
+          height: "100vh",
+          width: "16rem",
+          backgroundColor: "#091e36",
+          boxShadow: "0 25px 50px -12px rgba(0,0,0,.25)",
+          transform: open ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 300ms ease-in-out",
+        }}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 h-16" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+          <div className="flex items-center gap-2">
+            <ShieldIcon className="w-5 h-5 text-amber" />
+            <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.875rem" }}>昱保消防</span>
+          </div>
+          <button
+            onClick={onClose}
+            style={{ color: "#94a3b8", padding: "4px" }}
+            aria-label="關閉選單"
+          >
+            <CloseIcon className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <nav style={{ padding: "1rem 0.75rem" }}>
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-200 hover:bg-white/10 hover:text-amber transition-colors"
+            >
+              <item.icon className="w-5 h-5 text-slate-400" />
+              <span style={{ fontWeight: 500, fontSize: "0.875rem" }}>{item.label}</span>
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA at bottom */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+          <a
+            href="tel:0224345129"
+            onClick={onClose}
+            className="flex items-center justify-center gap-2 bg-amber hover:bg-amber-light font-semibold py-3 rounded-lg transition-colors text-sm"
+            style={{ color: "#091e36", width: "100%" }}
+          >
+            <PhoneIcon className="w-4 h-4" />
+            立即撥打
+          </a>
+        </div>
+      </aside>
+    </>,
+    document.body
+  );
+}
+
 export function MobileNav() {
   const [open, setOpen] = useState(false);
 
@@ -49,7 +137,6 @@ export function MobileNav() {
 
   return (
     <div className="sm:hidden">
-      {/* Hamburger button */}
       <button
         onClick={() => setOpen(true)}
         className="text-white p-1"
@@ -57,64 +144,7 @@ export function MobileNav() {
       >
         <MenuIcon className="w-6 h-6" />
       </button>
-
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 z-50 bg-black transition-opacity duration-300 ${
-          open ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={() => setOpen(false)}
-      />
-
-      {/* Sidebar drawer */}
-      <aside
-        style={{ backgroundColor: "#091e36" }}
-        className={`fixed top-0 right-0 z-[60] h-full w-64 shadow-2xl transform transition-transform duration-300 ease-in-out ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between px-5 h-16 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <ShieldIcon className="w-5 h-5 text-amber" />
-            <span className="text-white font-bold text-sm">昱保消防</span>
-          </div>
-          <button
-            onClick={() => setOpen(false)}
-            className="text-slate-400 hover:text-white p-1"
-            aria-label="關閉選單"
-          >
-            <CloseIcon className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Nav links */}
-        <nav className="px-3 py-4 space-y-1">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-200 hover:bg-white/10 hover:text-amber transition-colors"
-            >
-              <item.icon className="w-5 h-5 text-slate-400" />
-              <span className="font-medium text-sm">{item.label}</span>
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
-          <a
-            href="tel:0224345129"
-            onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-2 bg-amber hover:bg-amber-light text-navy-dark font-semibold w-full py-3 rounded-lg transition-colors text-sm"
-          >
-            <PhoneIcon className="w-4 h-4" />
-            立即撥打
-          </a>
-        </div>
-      </aside>
+      <DrawerPortal open={open} onClose={() => setOpen(false)} />
     </div>
   );
 }
