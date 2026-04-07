@@ -75,7 +75,7 @@ export function ProcessFlow() {
   const row2 = [steps[5], steps[4], steps[3]];
 
   return (
-    <div ref={containerRef} className="max-w-3xl mx-auto relative pr-12">
+    <div ref={containerRef} className="max-w-3xl mx-auto relative sm:pr-12">
       {/* SVG path */}
       <svg
         className="absolute inset-0 pointer-events-none z-0"

@@ -10,6 +10,7 @@ import {
 import { HeroIllustration } from "./hero-illustration";
 import { ServiceCards } from "./service-cards";
 import { ProcessFlow } from "./process-flow";
+import { MobileNav } from "./mobile-nav";
 
 function Navbar() {
   return (
@@ -41,6 +42,7 @@ function Navbar() {
             聯絡資訊
           </a>
         </div>
+        <MobileNav />
       </div>
     </nav>
   );
@@ -234,7 +236,7 @@ function CTA() {
         <h2 className="text-3xl font-bold text-white mb-4">
           歡迎來電詢問・報價
         </h2>
-        <p className="text-slate-400 mx-auto mb-8 leading-relaxed whitespace-nowrap">
+        <p className="text-slate-400 mx-auto mb-8 leading-relaxed">
           不論是消防安檢、設備改善或器材採購，歡迎隨時與我們聯繫詢問與報價。
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
