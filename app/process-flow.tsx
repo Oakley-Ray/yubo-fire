@@ -75,7 +75,7 @@ export function ProcessFlow() {
   const row2 = [steps[5], steps[4], steps[3]];
 
   return (
-    <div ref={containerRef} className="max-w-5xl mx-auto relative sm:pr-16">
+    <div ref={containerRef} className="max-w-5xl mx-auto relative sm:px-8">
       {/* SVG path */}
       <svg
         className="absolute inset-0 pointer-events-none z-0"
@@ -87,7 +87,7 @@ export function ProcessFlow() {
       </svg>
 
       {/* Row 1 circles */}
-      <div className="grid grid-cols-3 gap-10 pr-8">
+      <div className="grid grid-cols-3 gap-10">
         {row1.map((item, i) => (
           <div key={item.step} className="flex justify-center">
             <div
