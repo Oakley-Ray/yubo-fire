@@ -245,7 +245,7 @@ function CTA() {
             className="inline-flex items-center justify-center gap-2 bg-amber hover:bg-amber-light text-navy-dark font-semibold px-8 py-3.5 rounded-lg transition-colors"
           >
             <PhoneIcon className="w-4 h-4" />
-            02-2434-5129
+            立即撥打
           </a>
           <a
             href="#contact"
