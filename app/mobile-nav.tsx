@@ -110,7 +110,7 @@ export function MobileNav() {
             className="flex items-center justify-center gap-2 bg-amber hover:bg-amber-light text-navy-dark font-semibold w-full py-3 rounded-lg transition-colors text-sm"
           >
             <PhoneIcon className="w-4 h-4" />
-            02-2434-5129
+            立即撥打
           </a>
         </div>
       </aside>
